@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Color Grading Time Calculator</title>
+<link rel="stylesheet" href="../style.css">
+    <meta name="google-site-verification" content="PkLa_ViOo6FAHpvh8SacceMb95o9tePRdrqLNBz9X1M" />
+</head>
+<body>
+
+<h1>How Long Does Color Grading Take?</h1>
+
+<p>This calculator estimates grading time based on footage duration and complexity.</p>
+
+<label>Video Length (minutes):</label><input id="length" type="number"><br>
+
+<label>Project Complexity:</label>
+<select id="complexity">
+<option value="1">Basic correction</option>
+<option value="1.5">Standard grading</option>
+<option value="2.5">Heavy cinematic grading</option>
+</select><br>
+
+<label>Shots per minute:</label><input id="shots" type="number" value="5"><br>
+
+<button onclick="calc()">Estimate</button>
+
+<p id="res"></p>
+
+<script>
+function calc(){
+let length=+document.getElementById('length').value||0;
+let complexity=+document.getElementById('complexity').value||1;
+let shots=+document.getElementById('shots').value||5;
+
+// assume base: 1 minute grading per minute of footage * shots factor
+let time = length * complexity * (shots/5);
+
+let hours = time / 60;
+
+document.getElementById('res').innerText =
+"Estimated Grading Time: " + time.toFixed(2) + " minutes (" + hours.toFixed(2) + " hours)";
+}
+</script>
+
+<a href="../index.html">Back</a>
+
+</body>
+</html>
